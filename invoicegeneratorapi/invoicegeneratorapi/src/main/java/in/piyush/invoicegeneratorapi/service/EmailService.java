@@ -29,8 +29,8 @@ public class EmailService {
         helper.setTo(toEmail);
         helper.setSubject("Your Invoice");
         helper.setText("Dear Customer ,\n\n Please find attached your invoice.\n\nThank you!");
-
-        helper.addAttachment(file.getOriginalFilename(),new ByteArrayResource(file.getBytes()));
+        String fileName = "invoice_"+System.currentTimeMillis()+".pdf";
+        helper.addAttachment(fileName,new ByteArrayResource(file.getBytes()));
 
         mailSender.send(message);
     }
